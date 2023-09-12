@@ -1,5 +1,5 @@
 {
-  "homepage": "https://abhijeetj100.github.io/learn-react",
+  "homepage": "https://abhijeetj100.github.io/learn-react/",
   "name": "learn-react",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build  "
   },
   "eslintConfig": {
     "extends": [

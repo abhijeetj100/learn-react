@@ -1,26 +1,52 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { IClockProps, IClockState } from './App.model';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class Clock extends React.Component<IClockProps, IClockState> {
+  constructor(props: IClockProps) {
+    super(props);
+    this.state = {
+      date: new Date()
+    }
+  }
+
+  timer!: NodeJS.Timer;
+
+  componentDidMount() {
+    console.log("Mounted");
+    this.timer = setInterval(() => {
+      console.log('tick...');
+      this.setState({
+        date: new Date()
+      })
+    }, 1000)
+  }
+
+  componentWillUnmount() {
+    console.log("Unmounted");
+    clearInterval(this.timer);
+
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    )
+  }
+}
+
+class App extends React.Component {
+  render() {
+    return (
+      <div className='App'>
+        <Clock />
+      </div>
+    )
+  }
 }
 
 export default App;
